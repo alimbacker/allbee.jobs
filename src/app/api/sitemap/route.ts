@@ -36,7 +36,7 @@ export async function GET() {
     <lastmod>${new Date().toISOString()}</lastmod>
   </url>`).join('')}
 
-  ${(jobs || []).map(job => `
+  ${(jobs || []).map((job: { id: string; updated_at: string }) => `
   <url>
     <loc>${baseUrl}/jobs/${job.id}</loc>
     <changefreq>weekly</changefreq>
@@ -44,7 +44,7 @@ export async function GET() {
     <lastmod>${job.updated_at}</lastmod>
   </url>`).join('')}
 
-  ${(companies || []).map(company => `
+  ${(companies || []).map((company: { id: string; updated_at: string }) => `
   <url>
     <loc>${baseUrl}/companies/${company.id}</loc>
     <changefreq>weekly</changefreq>
